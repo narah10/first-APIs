@@ -5,9 +5,38 @@ GET http://localhost:8080/contacts
 ### Get all contacts by id
 GET http://localhost:8080/contacts/650f1c48f28411d1ea708bbf
 
+### create contact
+POST http://localhost:8080/contacts HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Mary",
+    "lastName": "Clarke",
+    "email": "mary@gmail.com",
+    "favoriteColor": "violet",
+    "birthday": "09/20/2004"
+}
+
+### Update contact
+
+PUT http://localhost:8080/contacts/650f1bd2f28411d1ea708bbe HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Jared",
+    "lastName": "Heppler",
+    "email": "hepplerJ@gmail.com",
+    "favoriteColor": "black",
+    "birthday": "09/14/2001"
+}
+
+### Delete contact
+DELETE http://localhost:8080/contacts/65165395e0f1025b0044cc5e HTTP/1.1
+
 
 //PRODUCTION
 GET https://cse341-first-apis.onrender.com/contacts
 
 ### Get all contacts by id
-GET https://cse341-first-apis.onrender.com/contacts/650f1c48f28411d1ea708bbf
+GET https://cse341-first-apis.onrender.com/contacts/65165395e0f1025b0044cc5e
+
