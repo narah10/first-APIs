@@ -40,3 +40,30 @@ GET https://cse341-first-apis.onrender.com/contacts
 ### Get all contacts by id
 GET https://cse341-first-apis.onrender.com/contacts/65165395e0f1025b0044cc5e
 
+### create contact
+POST https://cse341-first-apis.onrender.com/contacts HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Clarke",
+    "email": "jphn@gmail.com",
+    "favoriteColor": "grey",
+    "birthday": "01/20/2004"
+}
+
+### Update contact
+
+PUT https://cse341-first-apis.onrender.com/contacts/651658cd4ec69e1e926c8703 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Clarke",
+    "email": "jphn@gmail.com",
+    "favoriteColor": "yellow",
+    "birthday": "01/20/2004"
+}
+
+### Delete contact
+DELETE https://cse341-first-apis.onrender.com/contacts/651658cd4ec69e1e926c8703 HTTP/1.1
