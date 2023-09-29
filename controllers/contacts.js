@@ -35,17 +35,44 @@ const createContact = async (req, res, next) => {
     birthday: req.body.birthday
   }
   const result = await mongodb.getDb().db('contacts').collection('contacts').insertOne(contact);
+  console.log(result)
   if (result.acknowledged){
     res.status(201).json(result);
   } else {
     res.status(500).json(result.error);
   }
-  return res.send()
+}
+
+//updating the contact
+const updateContact = async (req, res, next) => {
+  const userId = new ObjectId(req.params.id);
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  }
+  const result = await mongodb.getDb().db('contacts').collection('contacts').replaceOne({ _id: userId }, contact);
+  if (result.acknowledged){
+    res.status(201).json(result);
+  } else {
+    res.status(500).json(result.error);
+  }
 
 }
 
-//updateing the contact
 
 //deleting contact by id 
+const deleteContact = async (req, res, next) => {
+  const userId = new ObjectId(req.params.id);
+  const result = await mongodb.getDb().db('contacts').collection('contacts').deleteOne({ _id: userId }, true);
+  if (result.acknowledged){
+    res.status(201).send();
+  } else {
+    res.status(500).json(result.error);
+  }
 
-  module.exports = { getAll, getSingle, createContact };
+}
+
+  module.exports = { getAll, getSingle, createContact, updateContact, deleteContact };
