@@ -1,3 +1,4 @@
+const { response } = require('express');
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
@@ -24,4 +25,27 @@ const getAll = async (req, res, next) => {
     });
   };
   
-  module.exports = { getAll, getSingle };
+//creating contact 
+const createContact = async (req, res, next) => {
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  }
+  const result = await mongodb.getDb().db('contacts').collection('contacts').insertOne(contact);
+  if (result.acknowledged){
+    res.status(201).json(result);
+  } else {
+    res.status(500).json(result.error);
+  }
+  return res.send()
+
+}
+
+//updateing the contact
+
+//deleting contact by id 
+
+  module.exports = { getAll, getSingle, createContact };
