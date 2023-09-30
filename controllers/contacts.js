@@ -1,8 +1,8 @@
-const { response } = require('express');
+// const { response } = require('express');
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res, next) => {
+const getAll = async (req, res) => {
     const result = await mongodb.getDb().db('contacts').collection('contacts').find();
     result.toArray().then((lists) => {
       console.log(lists)
@@ -11,7 +11,7 @@ const getAll = async (req, res, next) => {
     });
   };
 
-  const getSingle = async (req, res, next) => {
+  const getSingle = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     const result = await mongodb
       .getDb()
@@ -26,7 +26,7 @@ const getAll = async (req, res, next) => {
   };
   
 //creating contact 
-const createContact = async (req, res, next) => {
+const createContact = async (req, res) => {
   const contact = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -44,7 +44,7 @@ const createContact = async (req, res, next) => {
 }
 
 //updating the contact
-const updateContact = async (req, res, next) => {
+const updateContact = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   const contact = {
     firstName: req.body.firstName,
@@ -55,7 +55,7 @@ const updateContact = async (req, res, next) => {
   }
   const result = await mongodb.getDb().db('contacts').collection('contacts').replaceOne({ _id: userId }, contact);
   if (result.acknowledged){
-    res.status(201).json(result);
+    res.status(204).json(result);
   } else {
     res.status(500).json(result.error);
   }
@@ -64,11 +64,11 @@ const updateContact = async (req, res, next) => {
 
 
 //deleting contact by id 
-const deleteContact = async (req, res, next) => {
+const deleteContact = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   const result = await mongodb.getDb().db('contacts').collection('contacts').deleteOne({ _id: userId }, true);
   if (result.acknowledged){
-    res.status(201).send();
+    res.status(200).send();
   } else {
     res.status(500).json(result.error);
   }

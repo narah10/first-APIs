@@ -1,5 +1,5 @@
 const express = require('express')
-var cors = require('cors');
+// var cors = require('cors');
 const bodyParser = require('body-parser');
 const mongodb = require('./db/connect');
 const routes = require('./routes/index');
@@ -15,7 +15,7 @@ app
   })
   .use('/', routes);
 
-mongodb.initDb((err, mongodb) => {
+mongodb.initDb((err) => {
   if (err) {
     console.log(err);
   } else {

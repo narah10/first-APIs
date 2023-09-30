@@ -54,16 +54,16 @@ content-type: application/json
 
 ### Update contact
 
-PUT https://cse341-first-apis.onrender.com/contacts/651658cd4ec69e1e926c8703 HTTP/1.1
+PUT https://cse341-first-apis.onrender.com/contacts/651890a718e07a0415ea925b HTTP/1.1
 content-type: application/json
 
 {
     "firstName": "John",
     "lastName": "Clarke",
     "email": "jphn@gmail.com",
-    "favoriteColor": "yellow",
+    "favoriteColor": "pink",
     "birthday": "01/20/2004"
 }
 
 ### Delete contact
-DELETE https://cse341-first-apis.onrender.com/contacts/651658cd4ec69e1e926c8703 HTTP/1.1
+DELETE https://cse341-first-apis.onrender.com/contacts/651890a718e07a0415ea925b HTTP/1.1
