@@ -54,7 +54,7 @@ content-type: application/json
 
 ### Update contact
 
-PUT https://cse341-first-apis.onrender.com/contacts/651890a718e07a0415ea925b HTTP/1.1
+PUT https://cse341-first-apis.onrender.com/contacts/65189f05135f99a409f906fa HTTP/1.1
 content-type: application/json
 
 {
@@ -66,4 +66,4 @@ content-type: application/json
 }
 
 ### Delete contact
-DELETE https://cse341-first-apis.onrender.com/contacts/651890a718e07a0415ea925b HTTP/1.1
+DELETE https://cse341-first-apis.onrender.com/contacts/65189f05135f99a409f906fa HTTP/1.1
